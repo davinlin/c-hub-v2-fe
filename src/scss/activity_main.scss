@@ -1,0 +1,331 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+$bottom_url: url('../img/bg_pic.png');
+$cover_url: url('../img/bg_cover.png');
+$color_green: #5fb8a4;
+$color_orange: #ed9027;
+$color_dark: #4d4d4d;
+$color_light: #666666;
+$opacity_hover: 0.7;
+$opacity_active: 0.4;
+$trans_fast: 0.2s;
+$trans_mid: 0.5s;
+$trans_slow: 1s;
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#activity_list {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0.5vh;
+    width: 105vw;
+    height: 99vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    .row {
+        width: 15vw;
+        margin-left: 2vw;
+        display: inline-block;
+    }
+    #row_1 {
+        position: absolute;
+        left: 6vw;
+        top: 5vh;
+    }
+    #row_2 {
+        position: absolute;
+        left: 24vw;
+        top: 22vh;
+    }
+    #row_3 {
+        position: absolute;
+        left: 42vw;
+        top: 12vh;
+    }
+    #row_4 {
+        position: absolute;
+        left: 60vw;
+        top: 42vh;
+    }
+    .activity_item {
+        position: relative;
+        width: 100%;
+        height: 35vh;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        margin: 0vh 0vh 6vh 0vh;
+        transition: $trans_mid;
+        .auto_adjust {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: grey;
+            &.fat {
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            &.tall {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .preview_pic {
+                -webkit-filter: brightness(40%);
+                filter: brightness(40%);
+                transition: brightness $trans_mid;
+            }
+        }
+        .preview_more {
+            position: absolute;
+            z-index: 20;
+            left: 0;
+            right: 0;
+            bottom: 14vh;
+            margin: auto;
+            width: 8vh;
+            height: 8vh;
+            opacity: 0;
+            display: block;
+            background: $color_orange;
+            background-image: url('../img/project_more.png');
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 100vh;
+            transition: bottom $trans_mid, width $trans_mid, height $trans_mid, opacity $trans_slow, brightness $trans_mid;
+        }
+        .preview_title {
+            position: absolute;
+            z-index: 30;
+            left: 0;
+            right: 0;
+            bottom: 16vh;
+            margin: auto;
+            color: $color_orange;
+            font-size: 20px;
+            letter-spacing: 2px;
+            transition: opacity $trans_mid;
+            &:after {
+                position: absolute;
+                top: 38px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                content: "";
+                display: block;
+                height: 2px;
+                width: 30px;
+                background: $color_orange;
+            }
+        }
+        .preview_class {
+            position: absolute;
+            z-index: 30;
+            left: 0;
+            right: 0;
+            bottom: 11vh;
+            margin: auto;
+            letter-spacing: 2px;
+            transition: opacity $trans_mid;
+        }
+        .preview_date {
+            position: absolute;
+            z-index: 30;
+            left: 0;
+            right: 0;
+            bottom: 8.5vh;
+            margin: auto;
+            opacity: $opacity_hover;
+            letter-spacing: 2px;
+            transition: opacity $trans_mid;
+        }
+        .icon {
+            &.culture {
+                background-image: url('../img/project_icon_culture.png');
+            }
+            &.digital {
+                background-image: url('../img/project_icon_digital.png');
+            }
+            &.social {
+                background-image: url('../img/project_icon_social.png');
+            }
+            position: absolute;
+            z-index: 20;
+            left: 0;
+            right: 0;
+            bottom: 10vh;
+            margin: auto;
+            width: 8vh;
+            height: 8vh;
+            display: block;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity $trans_mid;
+        }
+        &:hover {
+            z-index: 100;
+            height: 42vh;
+            width: 18vw;
+            transform: translate( -1.5vw, -2vh );
+            .preview_pic {
+                -webkit-filter: brightness(100%);
+                filter: brightness(100%);
+            }
+            .preview_more {
+                bottom: 12vh;
+                height: 10vh;
+                width: 10vh;
+                opacity: 0.7;
+            }
+            .preview_title, .preview_class, .preview_date, .icon {
+                opacity: 0;
+            }
+        }
+        &:active {
+            .preview_pic {
+                -webkit-filter: brightness(30%);
+                filter: brightness(30%);
+            }
+            .preview_more {
+                -webkit-filter: brightness(80%);
+                filter: brightness(80%);
+            }
+        }
+    }
+}
+
+#preview_control {
+    position: absolute;
+    z-index: 200;
+    top: 30vh;
+    right: 10vw;
+    margin-right: 50px;
+    margin-top: -40px;
+    #page_up {
+        position: absolute;
+        top: -15vh;
+        background: url("../img/page_up.png");
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 100vh;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: .5s;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        opacity: 0;
+        &.show {
+            opacity: 1;
+        }
+        &:hover {
+            -webkit-filter: grayscale(0%);
+            filter: grayscale(0%);
+        }
+        &:active {
+            opacity: $opacity_active;
+        }
+    }
+    #page_down {
+        position: absolute;
+        bottom: -50vh;
+        background: url("../img/page_down.png");
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 100vh;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: .5s;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        opacity: 0;
+        &.show {
+            opacity: 1;
+        }
+        &:hover {
+            -webkit-filter: grayscale(0%);
+            filter: grayscale(0%);
+        }
+        &:active {
+            opacity: $opacity_active;
+        }
+    }
+    
+    .sort_way {
+        position: relative;
+        color: $color_orange;
+        display: block;
+        height: 60px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: opacity $trans_mid;
+        &:after {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            width: 16px;
+            background: $color_orange;
+            transition: width $trans_fast;
+        }
+        &:hover {
+            opacity: $opacity_hover;
+        }
+        &.now {
+            &:after {
+                position: absolute;
+                top: 24px;
+                left: 0;
+                content: "";
+                display: block;
+                height: 2px;
+                width: 32px;
+                background: $color_orange;
+            }
+        }
+        &:active {
+            opacity: $opacity_active;
+        }
+    }
+}
+
+.fake_scroll {
+    position: absolute;
+    top: 25vh;
+    right: 10vw;
+    width: 100px;
+    height: 60vh;
+    overflow: scroll;
+}
+
+.fake_cont {
+    height: 200vh;
+    width: 10px;
+}

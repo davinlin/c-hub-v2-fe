@@ -1,0 +1,66 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+$bottom_url: url('../img/bg_pic.png');
+$cover_url: url('../img/bg_cover.png');
+$color_green: #5fb8a4;
+$color_orange: #ed9027;
+$color_dark: #4d4d4d;
+$color_light: #666666;
+$opacity_hover: 0.7;
+$opacity_active: 0.4;
+$trans_fast: 0.2s;
+$trans_mid: 0.5s;
+$trans_slow: 1s;
+
+
+#space_intro {
+    .space_intro_gallery {
+        position: relative;
+        top: -20vh;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+    .space_bg {
+        position: absolute;
+        top: 0vh;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(76,73,72,1);
+        background: -moz-linear-gradient(top, rgba(76,73,72,1) 0%, rgba(4,0,0,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,73,72,1)), color-stop(100%, rgba(4,0,0,1)));
+        background: -webkit-linear-gradient(top, rgba(76,73,72,1) 0%, rgba(4,0,0,1) 100%);
+        background: -o-linear-gradient(top, rgba(76,73,72,1) 0%, rgba(4,0,0,1) 100%);
+        background: -ms-linear-gradient(top, rgba(76,73,72,1) 0%, rgba(4,0,0,1) 100%);
+        background: linear-gradient(to bottom, rgba(76,73,72,1) 0%, rgba(4,0,0,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4948', endColorstr='#040000', GradientType=0 );
+    }
+    .swiper-container {
+        height: 100%;
+        width: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: rgba(0,0,0,0.5);
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: auto;
+        }
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+}
